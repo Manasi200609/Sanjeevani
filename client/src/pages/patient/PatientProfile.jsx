@@ -74,7 +74,7 @@ export default function PatientProfile() {
         <h2 className="p-profile-name">{name}</h2>
         <div className="p-profile-status">
           <Activity size={12} />
-          <span>Connected to CareFlow</span>
+          <span>Connected to Sanjeevani</span>
         </div>
 
         <div className="p-profile-details">

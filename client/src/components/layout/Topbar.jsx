@@ -3,8 +3,8 @@ import { Search, Bell, ChevronDown, CalendarDays } from "lucide-react";
 import { useLanguage } from "../../services/LanguageContext";
 
 const pageTitles = {
-  monitor: "CareFlow · Live Monitor",
-  dashboard: "CareFlow · Live Monitor",
+  monitor: "Sanjeevani · Live Monitor",
+  dashboard: "Sanjeevani · Live Monitor",
   patients: "topbar.patientManagement",
   patient: "topbar.patientDetails",
   agent: "topbar.agentActivity",

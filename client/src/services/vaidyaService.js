@@ -13,7 +13,7 @@ import api from "./api";
 // 3. Sarvam LLM response generation
 // 4. Structured health-data extraction
 // 5. PatientEvent creation
-// 6. CareFlow agent triggering
+// 6. Sanjeevani agent triggering
 //
 // This service only handles the HTTP layer.
 // ============================================================
@@ -128,7 +128,7 @@ export const synthesizeSpeech = async (
  *   ↓
  * PatientEvent
  *   ↓
- * CareFlow trigger
+ * Sanjeevani trigger
  *   ↓
  * Sarvam TTS
  *

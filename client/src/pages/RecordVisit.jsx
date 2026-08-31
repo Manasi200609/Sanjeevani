@@ -120,7 +120,7 @@ export default function RecordVisit({ onNavigate }) {
           <CheckCircle2 size={18} />
           <div>
             <div style={{ fontWeight: 600, fontSize: "14px" }}>Visit recorded successfully</div>
-            <div style={{ fontSize: "12px", opacity: 0.8, marginTop: "2px" }}>Event added to patient timeline. CareFlow has been notified.</div>
+            <div style={{ fontSize: "12px", opacity: 0.8, marginTop: "2px" }}>Event added to patient timeline. Sanjeevani has been notified.</div>
           </div>
         </div>
       )}

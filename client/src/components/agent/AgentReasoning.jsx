@@ -29,7 +29,7 @@ export default function AgentReasoning({ analysis }) {
             AGENT REASONING
           </div>
 
-          <h2>Why CareFlow acted</h2>
+          <h2>Why Sanjeevani acted</h2>
         </div>
 
         <div

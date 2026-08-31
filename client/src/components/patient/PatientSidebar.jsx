@@ -25,9 +25,11 @@ export default function PatientSidebar() {
   return (
     <aside className="patient-sidebar">
       <div className="p-sidebar-brand">
-        <div className="p-brand-icon">
-          <HeartPulse size={20} strokeWidth={2.2} />
-        </div>
+        <img
+          src="/images/sanjeevani-blue.png"
+          alt="Sanjeevani"
+          style={{ width: 36, height: 36, objectFit: "contain" }}
+        />
         <div>
           <div className="p-brand-name">Vaidya</div>
           <div className="p-brand-sub">
@@ -56,10 +58,14 @@ export default function PatientSidebar() {
 
       <div className="p-sidebar-footer">
         <div className="p-footer-brand">
-          <Activity size={14} />
+          <img
+            src="/images/sanjeevani-blue.png"
+            alt=""
+            style={{ width: 14, height: 14, objectFit: "contain", opacity: 0.5 }}
+          />
           <div>
-            <div className="p-footer-name">CareFlow</div>
-            <div className="p-footer-sub">Connected care</div>
+            <div className="p-footer-name">Sanjeevani</div>
+            <div className="p-footer-sub">Life-giving care</div>
           </div>
         </div>
       </div>

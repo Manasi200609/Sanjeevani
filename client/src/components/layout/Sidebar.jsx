@@ -40,11 +40,13 @@ export default function Sidebar({ currentPage }) {
   return (
     <aside className="sidebar">
       <div className="sidebar-brand">
-        <div className="brand-logo">
-          <Activity size={21} strokeWidth={2.2} />
-        </div>
+        <img
+          src="/images/sanjeevani-green.png"
+          alt="Sanjeevani"
+          style={{ width: 32, height: 32, objectFit: "contain" }}
+        />
         <div className="brand-content">
-          <div className="brand-name">{t("app.name")}</div>
+          <div className="brand-name">Sanjeevani</div>
           <div className="brand-caption">{t("app.subtitle")}</div>
         </div>
       </div>

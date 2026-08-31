@@ -9,7 +9,7 @@ import {
 const activities = [
   {
     icon: Brain,
-    title: "CareFlow completed an agent run",
+    title: "Sanjeevani completed an agent run",
     description:
       "Anita Shinde · Follow-up increased to every 3 days",
     time: "Just now",

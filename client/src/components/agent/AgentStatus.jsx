@@ -89,7 +89,7 @@ export default function AgentStatus({
             AGENT STATUS
           </div>
 
-          <h2>CareFlow agent</h2>
+          <h2>Sanjeevani agent</h2>
         </div>
 
         <div

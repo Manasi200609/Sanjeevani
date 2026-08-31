@@ -1,6 +1,6 @@
 export default {
   // App
-  "app.name": "CareFlow",
+  "app.name": "Sanjeevani",
   "app.subtitle": "LONGITUDINAL CARE",
 
   // Sidebar
@@ -24,8 +24,8 @@ export default {
 
   // Dashboard
   "dashboard.greeting": "Good morning, ASHA worker.",
-  "dashboard.description": "CareFlow is continuously monitoring patient trajectories and surfacing the cases that need your attention.",
-  "dashboard.noData": "No patient data yet. Run the simulation to see CareFlow in action.",
+  "dashboard.description": "Sanjeevani is continuously monitoring patient trajectories and surfacing the cases that need your attention.",
+  "dashboard.noData": "No patient data yet. Run the simulation to see Sanjeevani in action.",
   "dashboard.setupDemo": "Setup Demo",
   "dashboard.resetDemo": "Reset Demo",
   "dashboard.refresh": "Refresh",
@@ -51,8 +51,8 @@ export default {
   "dashboard.autonomousCare": "AUTONOMOUS CARE",
   "dashboard.agentActivity": "Agent activity",
   "dashboard.noAgentRuns": "No agent runs yet.",
-  "dashboard.runSimulationSee": "Run the simulation to see CareFlow in action.",
-  "dashboard.completedPatientReview": "CareFlow completed a patient review",
+  "dashboard.runSimulationSee": "Run the simulation to see Sanjeevani in action.",
+  "dashboard.completedPatientReview": "Sanjeevani completed a patient review",
   "dashboard.completedIn": "Completed in",
   "dashboard.recentlyCompleted": "Recently completed",
   "dashboard.completed": "Completed",
@@ -84,7 +84,7 @@ export default {
 
   // Patient Details
   "patient.backToPatients": "Back to patients",
-  "patient.runAgent": "Run CareFlow Agent",
+  "patient.runAgent": "Run Sanjeevani Agent",
   "patient.running": "Running...",
   "patient.trajectory": "TRAJECTORY",
   "patient.riskScore": "RISK SCORE",
@@ -109,9 +109,9 @@ export default {
   "patient.adherencePattern": "Adherence pattern",
   "patient.noMedication": "No medication history recorded.",
   "patient.autonomousDecision": "AUTONOMOUS DECISION",
-  "patient.latestCareFlowAction": "Latest CareFlow action",
+  "patient.latestSanjeevaniAction": "Latest Sanjeevani action",
   "patient.agentCompleted": "Agent completed",
-  "patient.whyCareFlowActed": "Why CareFlow acted",
+  "patient.whySanjeevaniActed": "Why Sanjeevani acted",
   "patient.noAgentAnalysis": "No agent analysis available yet.",
   "patient.agentExecution": "AGENT EXECUTION",
   "patient.latestAgentRun": "Latest agent run",
@@ -172,7 +172,7 @@ export default {
   "agent.runningCount": "Running",
   "agent.failedCount": "Failed",
   "agent.noRuns": "No agent runs found.",
-  "agent.runSimulationSee": "Run the simulation from the Dashboard to see CareFlow agent activity.",
+  "agent.runSimulationSee": "Run the simulation from the Dashboard to see Sanjeevani agent activity.",
   "agent.steps": "steps",
 
   // Settings
@@ -184,7 +184,7 @@ export default {
   "settings.district": "District",
   "settings.state": "State",
   "settings.language": "Language Preference",
-  "settings.languageDescription": "Choose your preferred language for the CareFlow interface",
+  "settings.languageDescription": "Choose your preferred language for the Sanjeevani interface",
   "settings.save": "Save Settings",
   "settings.saved": "Settings saved!",
   "settings.preferences": "Preferences",
@@ -200,17 +200,17 @@ export default {
   "monitor.title": "Care Coordination",
   "monitor.attentionCount": "{count} patient{s} requiring attention",
   "monitor.allStable": "All patients currently stable",
-  "monitor.connecting": "Connecting to CareFlow...",
+  "monitor.connecting": "Connecting to Sanjeevani...",
   "monitor.latestAgentRun": "LATEST AGENT RUN",
   "monitor.requiringAttention": "REQUIRING ATTENTION",
   "monitor.risk": "Risk",
   "monitor.updated": "Updated",
   "monitor.liveActivity": "LIVE ACTIVITY",
   "monitor.eventStream": "Event Stream",
-  "monitor.careflowActive": "CareFlow Active",
-  "monitor.careflowProcessing": "CareFlow Processing",
-  "monitor.careflowIdle": "CareFlow Idle",
-  "monitor.careflowError": "CareFlow Error",
+  "monitor.careflowActive": "Sanjeevani Active",
+  "monitor.careflowProcessing": "Sanjeevani Processing",
+  "monitor.careflowIdle": "Sanjeevani Idle",
+  "monitor.careflowError": "Sanjeevani Error",
   "monitor.allStableStatus": "All Stable",
   "monitor.monitoring": "Monitoring",
   "monitor.lastCheck": "Last check",

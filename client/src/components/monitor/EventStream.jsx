@@ -150,7 +150,7 @@ function buildStreamEvents(dashboardData, agentRuns) {
         id: `reasoning-${run._id}`,
         type: "reasoning",
         timestamp: run.createdAt,
-        title: `CareFlow analyzed ${patientName}`,
+        title: `Sanjeevani analyzed ${patientName}`,
         subtitle: [
           analysis.riskLevel && `Risk: ${fmt(analysis.riskLevel)}`,
           trajectoryChange && `Trajectory: ${fmt(trajectoryChange)}`,
@@ -397,7 +397,7 @@ export default function EventStream({ onSelectPatient }) {
         <div className="stream-loading-icon">
           <Activity size={24} className="spin" />
         </div>
-        <div className="stream-loading-title">CareFlow is checking</div>
+        <div className="stream-loading-title">Sanjeevani is checking</div>
         <div className="stream-loading-subtitle">
           Reviewing recent patient activity...
         </div>
@@ -447,7 +447,7 @@ export default function EventStream({ onSelectPatient }) {
           <AlertTriangle size={24} />
         </div>
         <div className="stream-error-title">
-          CareFlow connection interrupted
+          Sanjeevani connection interrupted
         </div>
         <div className="stream-error-subtitle">
           We couldn't reach the monitoring service. Your existing patient records are not affected.
@@ -514,7 +514,7 @@ export default function EventStream({ onSelectPatient }) {
           <Activity size={28} />
         </div>
         <div className="stream-empty-title">
-          CareFlow is monitoring
+          Sanjeevani is monitoring
         </div>
         <div className="stream-empty-subtitle">
           All patients are currently stable. The agent is continuously watching

@@ -27,7 +27,7 @@ export default function AgentRun({ run }) {
           AUTONOMOUS LOOP
         </div>
 
-        <h2>What CareFlow did</h2>
+        <h2>What Sanjeevani did</h2>
 
         <AgentSteps
           steps={run.steps || []}

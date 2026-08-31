@@ -5,7 +5,7 @@ const STATUS_CONFIG = {
   active: {
     icon: Activity,
     labelKey: "monitor.careflowActive",
-    fallback: "CareFlow Active",
+    fallback: "Sanjeevani Active",
     dotColor: "#0E8C7C",
     textColor: "#0E8C7C",
     bgColor: "rgba(14, 140, 124, 0.08)",
@@ -13,7 +13,7 @@ const STATUS_CONFIG = {
   processing: {
     icon: Loader,
     labelKey: "monitor.careflowProcessing",
-    fallback: "CareFlow Processing",
+    fallback: "Sanjeevani Processing",
     dotColor: "#B09238",
     textColor: "#B09238",
     bgColor: "rgba(176, 146, 56, 0.08)",
@@ -21,7 +21,7 @@ const STATUS_CONFIG = {
   idle: {
     icon: Clock3,
     labelKey: "monitor.careflowIdle",
-    fallback: "CareFlow Idle",
+    fallback: "Sanjeevani Idle",
     dotColor: "#5A7A72",
     textColor: "#5A7A72",
     bgColor: "rgba(90, 122, 114, 0.06)",
@@ -29,7 +29,7 @@ const STATUS_CONFIG = {
   error: {
     icon: AlertTriangle,
     labelKey: "monitor.careflowError",
-    fallback: "CareFlow Error",
+    fallback: "Sanjeevani Error",
     dotColor: "#D4593A",
     textColor: "#D4593A",
     bgColor: "rgba(212, 89, 58, 0.08)",

@@ -1,7 +1,7 @@
 import {
   getLatestAgentRun,
   getAgentRunHistory,
-  runCareFlowAgent,
+  runSanjeevaniAgent,
   getPatientContext,
 } from "./api";
 
@@ -26,11 +26,11 @@ export const fetchAgentRunHistory = async (
   }
 };
 
-export const executeCareFlowAgent = async (
+export const executeSanjeevaniAgent = async (
   patientId,
   trigger = "manual"
 ) => {
-  const data = await runCareFlowAgent(patientId, trigger);
+  const data = await runSanjeevaniAgent(patientId, trigger);
   return data?.result || null;
 };
 

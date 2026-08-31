@@ -3,7 +3,6 @@ import {
   HeartPulse,
   MessageCircle,
   ArrowRight,
-  Activity,
 } from "lucide-react";
 
 const roles = [
@@ -14,7 +13,8 @@ const roles = [
       "Coordinate patients, monitor health trajectories, and receive intelligent care recommendations.",
     icon: HeartPulse,
     route: "/asha/dashboard",
-    accent: "teal",
+    accent: "green",
+    logo: "/images/sanjeevani-green.png",
   },
   {
     id: "patient",
@@ -23,7 +23,8 @@ const roles = [
       "Talk to your health assistant, understand your health, and stay connected with your care.",
     icon: MessageCircle,
     route: "/patient/home",
-    accent: "green",
+    accent: "blue",
+    logo: "/images/sanjeevani-blue.png",
   },
 ];
 
@@ -36,13 +37,15 @@ export default function RoleSelector() {
 
       <div className="role-selector-content">
         <div className="role-selector-brand">
-          <div className="role-brand-icon">
-            <Activity size={22} strokeWidth={2.2} />
-          </div>
+          <img
+            src="/images/sanjeevani-blue.png"
+            alt="Sanjeevani"
+            style={{ width: 44, height: 44, objectFit: "contain" }}
+          />
         </div>
 
         <h1 className="role-selector-title">
-          Welcome to CareFlow
+          Welcome to Sanjeevani
         </h1>
         <p className="role-selector-subtitle">
           How would you like to continue?
@@ -58,8 +61,12 @@ export default function RoleSelector() {
                 className={`role-card role-card-${role.accent}`}
                 onClick={() => navigate(role.route)}
               >
-                <div className="role-card-icon">
-                  <Icon size={26} />
+                <div className="role-card-logo">
+                  <img
+                    src={role.logo}
+                    alt=""
+                    style={{ width: 36, height: 36, objectFit: "contain" }}
+                  />
                 </div>
 
                 <div className="role-card-body">
@@ -77,7 +84,7 @@ export default function RoleSelector() {
         </div>
 
         <p className="role-selector-footer">
-          CareFlow — Longitudinal Care Coordination
+          Sanjeevani — Life-giving care, revived by attention
         </p>
       </div>
 
@@ -89,7 +96,7 @@ export default function RoleSelector() {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: var(--bg-base);
+          background: #020C1B;
           overflow: hidden;
         }
 
@@ -97,8 +104,8 @@ export default function RoleSelector() {
           position: absolute;
           inset: 0;
           background:
-            radial-gradient(ellipse 80% 50% at 50% -10%, rgba(14, 140, 124, 0.06), transparent),
-            radial-gradient(ellipse 60% 40% at 80% 100%, rgba(14, 140, 124, 0.04), transparent);
+            radial-gradient(ellipse 80% 50% at 50% -10%, rgba(16, 185, 129, 0.06), transparent),
+            radial-gradient(ellipse 60% 40% at 80% 100%, rgba(56, 189, 248, 0.04), transparent);
           pointer-events: none;
         }
 
@@ -120,32 +127,22 @@ export default function RoleSelector() {
 
         .role-selector-brand {
           margin-bottom: 28px;
-        }
-
-        .role-brand-icon {
-          width: 52px;
-          height: 52px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 15px;
-          background: #071A2B;
-          color: #94A3B8;
+          opacity: 0.9;
         }
 
         .role-selector-title {
           margin: 0;
           font-family: "Manrope", sans-serif;
-          font-size: 26px;
+          font-size: 28px;
           font-weight: 700;
           letter-spacing: -0.7px;
-          color: var(--text);
+          color: #F0F4F8;
           text-align: center;
         }
 
         .role-selector-subtitle {
           margin: 8px 0 0;
-          color: var(--muted);
+          color: #64748B;
           font-size: 13px;
           text-align: center;
         }
@@ -169,16 +166,13 @@ export default function RoleSelector() {
           flex-direction: column;
           align-items: flex-start;
           gap: 16px;
-
           padding: 28px 24px;
-
-          background: var(--surface);
-          border: 1px solid var(--border);
+          background: rgba(17, 34, 64, 0.6);
+          border: 1px solid rgba(148, 163, 184, 0.1);
           border-radius: 14px;
-
           text-align: left;
           cursor: pointer;
-
+          backdrop-filter: blur(8px);
           transition:
             box-shadow 0.2s ease,
             transform 0.2s ease,
@@ -187,34 +181,25 @@ export default function RoleSelector() {
 
         .role-card:hover {
           transform: translateY(-2px);
-          box-shadow: var(--shadow-lg);
-        }
-
-        .role-card-teal:hover {
-          border-color: var(--blue);
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
         .role-card-green:hover {
-          border-color: var(--teal);
+          border-color: rgba(16, 185, 129, 0.4);
         }
 
-        .role-card-icon {
+        .role-card-blue:hover {
+          border-color: rgba(56, 189, 248, 0.4);
+        }
+
+        .role-card-logo {
           width: 48px;
           height: 48px;
           display: flex;
           align-items: center;
           justify-content: center;
           border-radius: 13px;
-        }
-
-        .role-card-teal .role-card-icon {
-          background: var(--blue-bg);
-          color: var(--blue);
-        }
-
-        .role-card-green .role-card-icon {
-          background: var(--teal-bg);
-          color: var(--teal);
+          background: rgba(255, 255, 255, 0.04);
         }
 
         .role-card-body h2 {
@@ -223,12 +208,12 @@ export default function RoleSelector() {
           font-size: 16px;
           font-weight: 700;
           letter-spacing: -0.3px;
-          color: var(--text);
+          color: #F0F4F8;
         }
 
         .role-card-body p {
           margin: 6px 0 0;
-          color: var(--muted);
+          color: #94A3B8;
           font-size: 12px;
           line-height: 1.6;
         }
@@ -243,12 +228,12 @@ export default function RoleSelector() {
           font-weight: 600;
         }
 
-        .role-card-teal .role-card-action {
-          color: var(--blue);
+        .role-card-green .role-card-action {
+          color: #10B981;
         }
 
-        .role-card-green .role-card-action {
-          color: var(--teal);
+        .role-card-blue .role-card-action {
+          color: #38BDF8;
         }
 
         .role-card-action svg {
@@ -261,7 +246,7 @@ export default function RoleSelector() {
 
         .role-selector-footer {
           margin: 36px 0 0;
-          color: #64748B;
+          color: #475569;
           font-size: 10px;
           letter-spacing: 0.5px;
           text-align: center;

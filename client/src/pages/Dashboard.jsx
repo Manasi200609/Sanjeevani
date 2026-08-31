@@ -184,7 +184,7 @@ export default function Dashboard({ onSelectPatient }) {
       setError("");
       setSetupMessage(t("dashboard.settingUp"));
       await runSimulationSetup(5);
-      setSetupMessage("Running CareFlow agents...");
+      setSetupMessage("Running Sanjeevani agents...");
       await runAllAgents();
       await loadDashboard();
       setSetupMessage(t("dashboard.setupDemo") + "!");

@@ -150,7 +150,7 @@ export const getAIAnalysis = async (
 // CAREFLOW AGENT
 // ============================================================
 
-export const runCareFlowAgent = async (
+export const runSanjeevaniAgent = async (
   patientId,
   trigger = "manual"
 ) => {

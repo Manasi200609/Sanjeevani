@@ -21,7 +21,7 @@ import {
 import {
   fetchPatientContext,
   fetchLatestAgentRun,
-  executeCareFlowAgent,
+  executeSanjeevaniAgent,
 } from "../services/agentService";
 import { fetchPatientTimeline } from "../services/eventService";
 import { fetchActiveCarePlan } from "../services/carePlanService";
@@ -109,10 +109,10 @@ export default function PatientDetails({ patientId, onBack }) {
     try {
       setRunningAgent(true);
       setError("");
-      await executeCareFlowAgent(patientId, "manual");
+      await executeSanjeevaniAgent(patientId, "manual");
       await loadPatientData();
     } catch (err) {
-      console.error("CareFlow agent failed:", err);
+      console.error("Sanjeevani agent failed:", err);
       setError(
         err?.message || t("common.error")
       );
@@ -241,7 +241,7 @@ export default function PatientDetails({ patientId, onBack }) {
                 </>
               ) : (
                 <>
-                  <Brain size={16} /> Run CareFlow Agent
+                  <Brain size={16} /> Run Sanjeevani Agent
                 </>
               )}
             </button>
@@ -579,7 +579,7 @@ export default function PatientDetails({ patientId, onBack }) {
             <div className="section-eyebrow">
               AUTONOMOUS DECISION
             </div>
-            <h2>Latest CareFlow Action</h2>
+            <h2>Latest Sanjeevani Action</h2>
             {latestAnalysis ? (
               <>
                 <div className="decision-status">
@@ -596,7 +596,7 @@ export default function PatientDetails({ patientId, onBack }) {
                 </p>
                 <div className="decision-reasoning">
                   <div className="decision-reasoning-title">
-                    <Brain size={15} /> Why CareFlow
+                    <Brain size={15} /> Why Sanjeevani
                     Acted
                   </div>
                   <p>{latestAnalysis.reasoning}</p>
@@ -629,7 +629,7 @@ export default function PatientDetails({ patientId, onBack }) {
               </>
             ) : (
               <div className="empty-state">
-                No agent analysis yet. Run the CareFlow
+                No agent analysis yet. Run the Sanjeevani
                 agent to generate an assessment.
               </div>
             )}
@@ -767,7 +767,7 @@ export default function PatientDetails({ patientId, onBack }) {
               </div>
             ) : (
               <div className="empty-state">
-                No active care plan. Run the CareFlow agent
+                No active care plan. Run the Sanjeevani agent
                 to create one.
               </div>
             )}
@@ -856,7 +856,7 @@ export default function PatientDetails({ patientId, onBack }) {
             ) : (
               <div className="empty-state">
                 No agent run recorded yet. Click "Run
-                CareFlow Agent" to start.
+                Sanjeevani Agent" to start.
               </div>
             )}
           </div>

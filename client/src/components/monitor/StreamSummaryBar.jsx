@@ -43,7 +43,7 @@ export default function StreamSummaryBar({
       <div className="summary-status-row">
         <div className="summary-live-dot" />
         <span className="summary-status-text">
-          CareFlow {agentStatus === "active" ? "Active" : agentStatus === "processing" ? "Processing" : "Idle"}
+          Sanjeevani {agentStatus === "active" ? "Active" : agentStatus === "processing" ? "Processing" : "Idle"}
         </span>
         {lastCheck && (
           <span className="summary-last-check">

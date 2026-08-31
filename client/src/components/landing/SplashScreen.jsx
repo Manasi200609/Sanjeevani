@@ -4,11 +4,8 @@ export default function SplashScreen({ onComplete }) {
   const [phase, setPhase] = useState("hidden");
 
   useEffect(() => {
-    // Phase 1: fade in the logo
     const t1 = setTimeout(() => setPhase("visible"), 100);
-    // Phase 2: pulse/glow
     const t2 = setTimeout(() => setPhase("glow"), 800);
-    // Phase 3: fade out and complete
     const t3 = setTimeout(() => setPhase("exiting"), 2200);
     const t4 = setTimeout(() => onComplete?.(), 2800);
 
@@ -23,37 +20,18 @@ export default function SplashScreen({ onComplete }) {
   return (
     <div className="splash-screen">
       <div className={`splash-content ${phase}`}>
-        <div className="splash-icon">
-          <svg
-            width="48"
-            height="48"
-            viewBox="0 0 48 48"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect
-              width="48"
-              height="48"
-              rx="14"
-              fill="rgba(37, 99, 235, 0.15)"
-            />
-            <path
-              d="M24 12C17.373 12 12 17.373 12 24s5.373 12 12 12 12-5.373 12-12S30.627 12 24 12zm0 4a2 2 0 110 4 2 2 0 010-4zm-4 6h8v2h-2v4h-4v-4h-2v-2z"
-              fill="#3B82F6"
-            />
-            <path
-              d="M18 28c0-3.3 2.7-6 6-6s6 2.7 6 6"
-              stroke="#3B82F6"
-              strokeWidth="2"
-              strokeLinecap="round"
-            />
-          </svg>
+        <div className="splash-logo">
+          <img
+            src="/images/sanjeevani-blue.png"
+            alt="Sanjeevani"
+            style={{ width: 64, height: 64, objectFit: "contain" }}
+          />
         </div>
 
         <div className="splash-text">
-          <h1 className="splash-title">CareFlow</h1>
-          <p className="splash-subtitle">
-            LONGITUDINAL CARE
+          <h1 className="splash-title">SANJEEVANI</h1>
+          <p className="splash-tagline">
+            Life-giving care, revived by attention
           </p>
         </div>
 
@@ -68,7 +46,7 @@ export default function SplashScreen({ onComplete }) {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: linear-gradient(160deg, #071A2B 0%, #0D2740 60%, #2563EB 100%);
+          background: linear-gradient(160deg, #020C1B 0%, #0A1929 50%, #112240 100%);
         }
 
         .splash-content {
@@ -97,21 +75,16 @@ export default function SplashScreen({ onComplete }) {
           transition: opacity 0.5s ease, transform 0.5s ease;
         }
 
-        .splash-icon {
-          width: 72px;
-          height: 72px;
+        .splash-logo {
+          width: 80px;
+          height: 80px;
           display: flex;
           align-items: center;
           justify-content: center;
-          border-radius: 20px;
-          background: rgba(59, 130, 246, 0.12);
-          backdrop-filter: blur(8px);
-          border: 1px solid rgba(59, 130, 246, 0.15);
-        }
-
-        .splash-icon svg {
-          width: 44px;
-          height: 44px;
+          border-radius: 22px;
+          background: rgba(56, 189, 248, 0.08);
+          backdrop-filter: blur(12px);
+          border: 1px solid rgba(56, 189, 248, 0.12);
         }
 
         .splash-text {
@@ -121,17 +94,17 @@ export default function SplashScreen({ onComplete }) {
         .splash-title {
           margin: 0;
           font-family: "Manrope", sans-serif;
-          font-size: 36px;
+          font-size: 38px;
           font-weight: 800;
-          letter-spacing: -1px;
+          letter-spacing: 2px;
           color: #F0F4F8;
         }
 
-        .splash-subtitle {
-          margin: 6px 0 0;
-          font-size: 10px;
-          font-weight: 600;
-          letter-spacing: 3px;
+        .splash-tagline {
+          margin: 8px 0 0;
+          font-size: 11px;
+          font-weight: 500;
+          letter-spacing: 1.5px;
           color: #64748B;
         }
 
@@ -139,7 +112,7 @@ export default function SplashScreen({ onComplete }) {
           width: 40px;
           height: 2px;
           border-radius: 1px;
-          background: rgba(37, 99, 235, 0.4);
+          background: rgba(56, 189, 248, 0.4);
           margin-top: 4px;
           opacity: 0;
           transition: opacity 0.6s ease 0.4s, width 0.6s ease 0.4s;

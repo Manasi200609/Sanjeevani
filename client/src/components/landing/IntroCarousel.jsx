@@ -39,11 +39,11 @@ const slides = [
   {
     id: 4,
     image: "/images/asha-4.jpg",
-    title: "CareFlow",
-    eyebrow: "Autonomous longitudinal care agent",
+    title: "Sanjeevani",
+    eyebrow: "Life-giving care, revived by attention",
     description:
-      "Observe → Remember → Reason → Replan. CareFlow continuously understands patient trajectories, detects meaningful changes, and helps ASHA workers provide timely, informed care.",
-    label: "CAREFLOW",
+      "Observe → Remember → Reason → Replan. Sanjeevani continuously understands patient trajectories, detects meaningful changes, and helps ASHA workers provide timely, informed care.",
+    label: "SANJEEVANI",
     node: "SOLUTION",
   },
 ];
@@ -326,9 +326,9 @@ export default function IntroCarousel({ onComplete }) {
       <button
         className="carousel-explore"
         onClick={onComplete}
-        aria-label="Explore CareFlow"
+        aria-label="Explore Sanjeevani"
       >
-        <span>Explore CareFlow</span>
+        <span>Explore Sanjeevani</span>
         <ArrowRight size={16} />
       </button>
 
@@ -347,7 +347,7 @@ export default function IntroCarousel({ onComplete }) {
           display: flex;
           flex-direction: column;
           align-items: center;
-          background: var(--bg-base, #060D17);
+          background: var(--bg-base, #020C1B);
           overflow: hidden;
           user-select: none;
           animation: introFadeIn 0.6s ease both;
@@ -677,7 +677,7 @@ export default function IntroCarousel({ onComplete }) {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: linear-gradient(135deg, #0D2740, #071A2B);
+          background: linear-gradient(135deg, #112240, #0A1929);
           z-index: 0;
         }
 
