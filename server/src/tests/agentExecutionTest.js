@@ -109,7 +109,7 @@ const runTests = async () => {
   // B. Model configuration
   // --------------------------------------------------------
   section("B. MODEL CONFIGURATION");
-  assert(env.GEMINI_MODEL === "gemini-3-flash-preview", `GEMINI_MODEL=${env.GEMINI_MODEL} (expected: gemini-3-flash-preview)`);
+  assert(env.GEMINI_MODEL === "gemini-3.7-flash", `GEMINI_MODEL=${env.GEMINI_MODEL} `);
 
   // --------------------------------------------------------
   // C-G. Seed and run the worsening scenario

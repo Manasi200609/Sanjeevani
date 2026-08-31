@@ -11,7 +11,7 @@ dotenv.config();const env = {
     process.env.GEMINI_API_KEY,
   GEMINI_MODEL:
     process.env.GEMINI_MODEL ||
-    "gemini-3-flash-preview",
+    "gemini-3.7-flash",
   SARVAM_API_KEY:
     process.env.SARVAM_API_KEY || "",
   AI_PROVIDER:

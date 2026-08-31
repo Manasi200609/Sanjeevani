@@ -584,7 +584,7 @@ const runWithADK = async ({ patientId, patient, userMessage, trigger, startTime,
 
   const agent = new LlmAgent({
     name: "careflow_agent",
-    model: env.GEMINI_MODEL || "gemini-3-flash-preview",
+    model: env.GEMINI_MODEL || "gemini-3.7-flash",
     description: "CareFlow autonomous longitudinal care agent",
     instruction: CAREFLOW_INSTRUCTION,
     tools,
@@ -620,7 +620,7 @@ const runWithADK = async ({ patientId, patient, userMessage, trigger, startTime,
     agent: "careflow",
     provider: "gemini_adk",
     framework: "google-adk",
-    model: env.GEMINI_MODEL || "gemini-3-flash-preview",
+    model: env.GEMINI_MODEL || "gemini-3.7-flash",
     patientId,
     trigger,
     response: finalText || `CareFlow agent completed ${toolCallsLog.length} tool calls successfully`,
@@ -641,7 +641,7 @@ const runWithADK = async ({ patientId, patient, userMessage, trigger, startTime,
 
 const runWithGemini = async ({ patientId, patient, userMessage, trigger, startTime }) => {
   const genAI = new GoogleGenerativeAI(env.GEMINI_API_KEY);
-  const modelName = env.GEMINI_MODEL || "gemini-3-flash-preview";
+  const modelName = env.GEMINI_MODEL || "gemini-3.7-flash";
 
   const model = genAI.getGenerativeModel({
     model: modelName,
