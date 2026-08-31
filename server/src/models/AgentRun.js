@@ -57,9 +57,45 @@ const agentRunSchema = new mongoose.Schema(
         "trajectory_change",
         "scheduled_monitor",
         "follow_up_due",
+        "patient_reassessment",
+        "memory_consolidation",
         "system",
       ],
       default: "manual",
+    },
+
+    // ==========================================================
+    // JOB TYPE (for scheduled/pipeline runs)
+    // ==========================================================
+
+    jobType: {
+      type: String,
+      enum: [
+        "patient_reassessment",
+        "memory_consolidation",
+        null,
+      ],
+      default: null,
+    },
+
+    // ==========================================================
+    // BATCH INFO (for bulk scheduled runs)
+    // ==========================================================
+
+    batchId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "SchedulerEvent",
+      default: null,
+    },
+
+    batchSize: {
+      type: Number,
+      default: null,
+    },
+
+    batchIndex: {
+      type: Number,
+      default: null,
     },
 
     // ==========================================================

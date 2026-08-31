@@ -27,6 +27,7 @@ const TOPICS = {
   AGENT_TRIGGER: "careflow-agent-trigger",
   PATIENT_EVENT: "careflow-patient-event",
   MEMORY_CONSOLIDATION: "careflow-memory-consolidation",
+  PATIENT_REASSESSMENT: "careflow-patient-reassessment",
   NOTIFICATION: "careflow-notification",
 };
 
@@ -191,6 +192,17 @@ export const publishPatientEvent = async (data) => {
 export const publishMemoryConsolidation = async (data) => {
   return publishEvent(TOPICS.MEMORY_CONSOLIDATION, {
     type: "memory_consolidation",
+    ...data,
+  });
+};
+
+// ============================================================
+// HELPER: PUBLISH PATIENT REASSESSMENT TRIGGER
+// ============================================================
+
+export const publishPatientReassessment = async (data) => {
+  return publishEvent(TOPICS.PATIENT_REASSESSMENT, {
+    type: "patient_reassessment",
     ...data,
   });
 };

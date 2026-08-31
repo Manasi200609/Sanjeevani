@@ -15,10 +15,11 @@ RUN npm ci --omit=dev
 # Copy application code
 COPY . .
 
-# Cloud Run provides PORT environment variable
+# Cloud Run injects PORT at runtime (typically 8080).
+# If deploying locally without PORT set, default to 8080.
 ENV PORT=8080
-
 EXPOSE 8080
 
-# Start the server
+# Default: start the Express server
+# For Cloud Run Jobs, override with: node src/jobs/runner.js
 CMD ["node", "src/server.js"]

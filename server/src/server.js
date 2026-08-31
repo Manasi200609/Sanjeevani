@@ -16,14 +16,36 @@ import vaidyaRoutes from "./routes/vaidyaRoutes.js";
 import vaidyaVoiceRoutes from "./routes/vaidyaVoiceRoutes.js";
 import agentEventRoutes from "./routes/agentEventRoutes.js";
 import demoRoutes from "./routes/demoRoutes.js";
+import schedulerRoutes from "./routes/schedulerRoutes.js";
 
 // Pub/Sub agent trigger subscription (for production mode)
 import { subscribeToAgentTriggers } from "./services/vaidyaService.js";
 
 const app = express();
 
+// ── CORS ──────────────────────────────────────────────────
+const ALLOWED_ORIGINS = [
+  "http://localhost:5173",
+  "http://localhost:5174",
+  "http://localhost:5000",
+  "https://sanjeevani-murex.vercel.app",
+];
+
 app.use(
-  cors()
+  cors({
+    origin(origin, callback) {
+      // Allow requests with no origin (curl, mobile apps, server-to-server)
+      if (!origin || ALLOWED_ORIGINS.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error(`Not allowed by CORS: ${origin}`));
+      }
+    },
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: false,
+    maxAge: 86400,
+  })
 );
 
 app.use(
@@ -112,6 +134,11 @@ app.use(
 );
 
 app.use(
+  "/api/scheduler",
+  schedulerRoutes
+);
+
+app.use(
   (req, res) => {
     res.status(404).json({
       success: false,
@@ -128,6 +155,13 @@ app.use(
       error
     );
 
+    // Ensure CORS headers are present even on error responses.
+    // This prevents the browser from hiding the real error behind CORS.
+    const origin = req.headers.origin;
+    if (origin && ALLOWED_ORIGINS.includes(origin)) {
+      res.setHeader("Access-Control-Allow-Origin", origin);
+    }
+
     res.status(500).json({
       success: false,
       message:
@@ -140,6 +174,13 @@ app.use(
     });
   }
 );
+
+// Prevent unhandled promise rejections from crashing silently.
+// This ensures the browser gets a response (with CORS headers) instead of
+// a network error caused by a killed process.
+process.on("unhandledRejection", (reason) => {
+  console.error("Unhandled promise rejection:", reason);
+});
 
 const startServer = async () => {
   await connectDB();
