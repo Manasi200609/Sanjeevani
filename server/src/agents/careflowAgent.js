@@ -535,40 +535,59 @@ Begin by calling get_patient_context with patientId "${patientId}".`;
 //
 // We do NOT manually orchestrate tool calls — the ADK runner does.
 // ============================================================
-
-const runWithADK = async ({ patientId, patient, userMessage, trigger, startTime, adk }) => {
+const runWithADK = async ({
+  patientId,
+  patient,
+  userMessage,
+  trigger,
+  startTime,
+  adk,
+}) => {
   const { LlmAgent, FunctionTool, InMemoryRunner } = adk;
 
-  // Ensure GEMINI_API_KEY is in process.env (ADK reads it from there)
+  // ADK reads Gemini credentials from process.env
   if (!process.env.GEMINI_API_KEY && env.GEMINI_API_KEY) {
     process.env.GEMINI_API_KEY = env.GEMINI_API_KEY;
   }
 
-  // Build ADK FunctionTools — use JSON Schema directly (ADK accepts it)
-  // IMPORTANT: ADK's runEphemeral() does NOT expose tool calls in the event stream.
-  // Tool calls are executed internally by ADK. We wrap each tool's execute callback
-  // to capture the actual tool invocations for tracing and AgentEvent creation.
   const toolCallsLog = [];
+
+  // ----------------------------------------------------------
+  // CREATE ADK TOOLS
+  // ----------------------------------------------------------
 
   const tools = TOOL_DEFINITIONS.map((def) => {
     const name = def.function.name;
+
     return new FunctionTool({
       name,
       description: def.function.description,
       parameters: def.function.parameters,
+
       execute: async (args) => {
         const startMs = Date.now();
+
         console.log(`  🔧 ADK tool call: ${name}`);
+
         let result;
         let success = true;
+
         try {
           result = await executeTool(name, args);
+
           console.log(`  ✅ ADK tool result: ${name}`);
         } catch (error) {
-          result = { error: error.message };
           success = false;
-          console.log(`  ❌ ADK tool error: ${name}: ${error.message}`);
+
+          result = {
+            error: error.message,
+          };
+
+          console.log(
+            `  ❌ ADK tool error: ${name}: ${error.message}`
+          );
         }
+
         toolCallsLog.push({
           name,
           args,
@@ -577,10 +596,15 @@ const runWithADK = async ({ patientId, patient, userMessage, trigger, startTime,
           timestamp: new Date(),
           durationMs: Date.now() - startMs,
         });
+
         return result;
       },
     });
   });
+
+  // ----------------------------------------------------------
+  // CREATE AGENT
+  // ----------------------------------------------------------
 
   const agent = new LlmAgent({
     name: "careflow_agent",
@@ -590,31 +614,80 @@ const runWithADK = async ({ patientId, patient, userMessage, trigger, startTime,
     tools,
   });
 
-  const runner = new InMemoryRunner({ name: "careflow", agent });
-
-  let finalText = "";
-
-  // runEphemeral() returns an async iterable of session events
-  // Events contain: invocationId, author, actions, errorCode, errorMessage
-  // The actual tool calls are captured via wrapped execute callbacks above.
-  const events = runner.runEphemeral({
-    userId: "careflow-worker",
-    newMessage: { role: "user", parts: [{ text: userMessage }] },
+  const runner = new InMemoryRunner({
+    name: "careflow",
+    agent,
   });
 
-  for await (const event of events) {
-    // ADK session events — log errors, capture final state
-    if (event.errorCode) {
-      console.error(`  ⚠️ ADK event error: ${event.errorCode} - ${event.errorMessage?.slice(0, 200)}`);
+  let finalText = "";
+  let adkFailed = false;
+  let adkFailureReason = null;
+
+  // ----------------------------------------------------------
+  // RUN ADK
+  // ----------------------------------------------------------
+
+  try {
+    const events = runner.runEphemeral({
+      userId: "careflow-worker",
+      newMessage: {
+        role: "user",
+        parts: [{ text: userMessage }],
+      },
+    });
+
+    for await (const event of events) {
+      // ADK can report model/API errors through events
+      if (event.errorCode) {
+        adkFailed = true;
+        adkFailureReason =
+          `${event.errorCode}: ${event.errorMessage || "Unknown ADK error"}`;
+
+        console.error(
+          `  ⚠️ ADK event error: ${adkFailureReason}`
+        );
+      }
+
+      // Capture state delta if ADK produced one
+      if (
+        event.actions?.stateDelta &&
+        Object.keys(event.actions.stateDelta).length > 0
+      ) {
+        finalText = JSON.stringify(event.actions.stateDelta);
+      }
     }
-    // The last event's actions may contain state deltas
-    if (event.actions?.stateDelta && Object.keys(event.actions.stateDelta).length > 0) {
-      finalText = JSON.stringify(event.actions.stateDelta);
-    }
+  } catch (error) {
+    adkFailed = true;
+    adkFailureReason = error.message;
+
+    console.error(
+      `  ❌ ADK execution failed: ${error.message}`
+    );
   }
 
   const durationMs = Date.now() - startTime;
-  console.log(`  📝 ADK agent completed: ${toolCallsLog.length} tool calls, ${durationMs}ms`);
+
+  // ----------------------------------------------------------
+  // IMPORTANT:
+  // ADK 503 / no-tool-call failure MUST NOT be treated as success
+  // ----------------------------------------------------------
+
+  if (adkFailed) {
+    throw new Error(
+      `ADK agent failed: ${adkFailureReason}`
+    );
+  }
+
+  if (toolCallsLog.length === 0) {
+    throw new Error(
+      "ADK agent completed without making any tool calls. " +
+      "No valid longitudinal assessment was performed."
+    );
+  }
+
+  console.log(
+    `  📝 ADK agent completed: ${toolCallsLog.length} tool calls, ${durationMs}ms`
+  );
 
   return {
     agent: "careflow",
@@ -623,7 +696,9 @@ const runWithADK = async ({ patientId, patient, userMessage, trigger, startTime,
     model: env.GEMINI_MODEL || "gemini-3.7-flash",
     patientId,
     trigger,
-    response: finalText || `CareFlow agent completed ${toolCallsLog.length} tool calls successfully`,
+    response:
+      finalText ||
+      `CareFlow agent completed ${toolCallsLog.length} tool calls successfully`,
     toolCalls: toolCallsLog,
     rounds: toolCallsLog.length > 0 ? 1 : 0,
     durationMs,
