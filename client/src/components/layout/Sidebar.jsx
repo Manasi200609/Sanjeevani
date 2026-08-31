@@ -43,7 +43,7 @@ export default function Sidebar({ currentPage }) {
         <img
           src="/images/sanjeevani-green.png"
           alt="Sanjeevani"
-          style={{ width: 32, height: 32, objectFit: "contain" }}
+          style={{ width: 50, height: 50, objectFit: "contain", borderRadius: 12 }}
         />
         <div className="brand-content">
           <div className="brand-name">Sanjeevani</div>

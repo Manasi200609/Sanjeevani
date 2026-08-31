@@ -38,9 +38,9 @@ export default function RoleSelector() {
       <div className="role-selector-content">
         <div className="role-selector-brand">
           <img
-            src="/images/sanjeevani-blue.png"
+            src="/images/sanjeevani-green.png"
             alt="Sanjeevani"
-            style={{ width: 44, height: 44, objectFit: "contain" }}
+            style={{ width: 88, height: 88, objectFit: "contain" }}
           />
         </div>
 
@@ -65,7 +65,7 @@ export default function RoleSelector() {
                   <img
                     src={role.logo}
                     alt=""
-                    style={{ width: 36, height: 36, objectFit: "contain" }}
+                    style={{ width: 60, height: 60, objectFit: "contain" }}
                   />
                 </div>
 
@@ -127,7 +127,7 @@ export default function RoleSelector() {
 
         .role-selector-brand {
           margin-bottom: 28px;
-          opacity: 0.9;
+          opacity: 0.95;
         }
 
         .role-selector-title {
@@ -193,12 +193,12 @@ export default function RoleSelector() {
         }
 
         .role-card-logo {
-          width: 48px;
-          height: 48px;
+          width: 80px;
+          height: 80px;
           display: flex;
           align-items: center;
           justify-content: center;
-          border-radius: 13px;
+          border-radius: 18px;
           background: rgba(255, 255, 255, 0.04);
         }
 

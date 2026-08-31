@@ -22,9 +22,9 @@ export default function SplashScreen({ onComplete }) {
       <div className={`splash-content ${phase}`}>
         <div className="splash-logo">
           <img
-            src="/images/sanjeevani-blue.png"
+            src="/images/sanjeevani-green.png"
             alt="Sanjeevani"
-            style={{ width: 64, height: 64, objectFit: "contain" }}
+            style={{ width: 120, height: 120, objectFit: "contain" }}
           />
         </div>
 
@@ -76,15 +76,15 @@ export default function SplashScreen({ onComplete }) {
         }
 
         .splash-logo {
-          width: 80px;
-          height: 80px;
+          width: 180px;
+          height: 180px;
           display: flex;
           align-items: center;
           justify-content: center;
-          border-radius: 22px;
-          background: rgba(56, 189, 248, 0.08);
-          backdrop-filter: blur(12px);
-          border: 1px solid rgba(56, 189, 248, 0.12);
+          border-radius: 36px;
+          background: rgba(16, 185, 129, 0.06);
+          backdrop-filter: blur(16px);
+          border: 1px solid rgba(16, 185, 129, 0.1);
         }
 
         .splash-text {

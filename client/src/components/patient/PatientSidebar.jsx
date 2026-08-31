@@ -28,7 +28,7 @@ export default function PatientSidebar() {
         <img
           src="/images/sanjeevani-blue.png"
           alt="Sanjeevani"
-          style={{ width: 36, height: 36, objectFit: "contain" }}
+          style={{ width: 54, height: 54, objectFit: "contain", borderRadius: 14 }}
         />
         <div>
           <div className="p-brand-name">Vaidya</div>
@@ -61,7 +61,7 @@ export default function PatientSidebar() {
           <img
             src="/images/sanjeevani-blue.png"
             alt=""
-            style={{ width: 14, height: 14, objectFit: "contain", opacity: 0.5 }}
+            style={{ width: 20, height: 20, objectFit: "contain", opacity: 0.5, borderRadius: 4 }}
           />
           <div>
             <div className="p-footer-name">Sanjeevani</div>
